@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= event.title %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1><%= event.title %></h1>
+
+    <h2>Event Details</h2>
+    <p>Date: <%= event.date %></p>
+    <p>Time: <%= event.time %></p>
+    <p>Location: <%= event.location %></p>
+    <p>Dress Code: <%= event.dressCode %></p>
+    <p>Description: <%= event.description %></p>
+
+    <% if (event.owner._id.equals(user._id)) { %>
+        <a href="/events/<%= event._id %>/edit">Edit this listing</a>
+        <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete this event</button>
+        </form>
+      
+    <% } %>
+
+   
+</body>
+</html>

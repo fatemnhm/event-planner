@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+
+
+
+
+    <title>All Events</title>
+  </head>
+  
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <div class="index-header">
+    <h1>All Events</h1>
+    <a href="/events/new">Add Events</a>
+  </div>
+
+  <div class="card-container">
+    <% event.forEach((event) => { %>
+    <a href="/events/<%= event._id %>">
+      <h4><%= event.title %> Event</h4>
+      <p>Owned by <%= event.owner.username %></p>
+    </a>
+    <% }) %>
+  </div>
+</body>
+</html>
+
+

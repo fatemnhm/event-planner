@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700');
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #E2E2E2;
+  }
+  .landing-header {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 20px 35px;
+  }
+  
+  .logo-container > h1 {
+    margin: 0;
+    font-size: 1.4em;
+  }
+  
+  .house-icon {
+    background-image: url('https://cdn-icons-png.flaticon.com/128/11382/11382524.png');
+    width: 1.4em;
+    height: 1.4em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 2px;
+    padding-left: 5px;
+  }
+  
+  .landing-image {
+    background-image: url('https://images.unsplash.com/photo-1448630360428-65456885c650');
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 0 0 -8px;
+  }
+  
+  .auth-links,
+  .nav-links {
+    margin: 25px 20px;
+  }
+  
+  .auth-links > a {
+    color: white;
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .auth-links > a:first-child {
+    background-color: #5A6172;
+  }
+  
+  .auth-links > a:first-child:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .auth-links > a:nth-child(2) {
+    background-color: #A5A5B6;
+  }
+  
+  .auth-links > a:nth-child(2):hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .nav-links > a {
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .nav-links > a:hover {
+    color: #6f8dae;
+    text-decoration: underline;
+  }
+
+  .signup-page,
+.signin-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90%;
+}
+
+.signup-form-container-1,
+.signin-form-container-1 {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form-container-2,
+.signin-form-container-2 {
+  padding: 10px 30px 20px;
+  border: 1px solid gray;
+}
+
+.signup-form-container-2 > h1,
+.signin-form-container-2 > h1 {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.signup-form-container-2 > form,
+.signin-form-container-2 > form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.9em;
+}
+
+input {
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 10px;
+  margin: 10px 0;
+  width: 15em;
+  padding: 5px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  background-color: #274c9c;
+  padding: 7px 15px;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: black;
+}
+
+.signup-img {
+    background-image: url('https://images.unsplash.com/photo-1617787825603-cf14af67c815?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    min-height: 110vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 40%;
+    position: relative;
+    z-index: -10;
+  }
+  
+  .signin-img {
+    background-image: url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8');
+    min-height: 110vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 40%;
+    position: relative;
+    z-index: -10;
+    left: -10px;
+  }
+  .index-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    width: 90%;
+  }
+  
+  .index-header > h1 {
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
+  
+  .index-header > a {
+    padding: 6px 12px;
+    border: 1px solid gray;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .index-header > a:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 70px;
+  }
+  
+  .card-container > a {
+    padding: 12px 25px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 5px 30px 50px;
+    color: black;
+  }
+  
+  .card-container > a:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  a > h4 {
+    font-weight: normal;
+    font-size: 1em;
+  }
