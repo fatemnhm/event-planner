@@ -11,29 +11,34 @@ router.get('/sign-up', async (req, res) => {
 });
 
 router.post('/sign-up', async (req, res) => {
-  // grab the values from the req body
+  // Grab the values from the req body
   const username = req.body.username;
+  const email = req.body.email; // Added email field
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
-  // Check if the user already exists
-  const existingUser = await User.findOne({ username });
 
-  // if the user exists,then dont bother doing anything, just send a message to the browser
+  // Check if the user already exists by username or email
+  const existingUser = await User.findOne({ 
+    $or: [{ username }, { email }] 
+  });
+
+  // If the user exists, send a message to the browser
   if (existingUser) {
-    return res.send('Username is taken');
+    return res.send('Username or email is already taken');
   }
-  // verify that the password matches
+
+  // Verify that the password matches
   if (password !== confirmPassword) {
     return res.send("Passwords don't match!");
   }
 
-  // create the user in the database
-  // -b make the password secure
+  // Create the user in the database with a secure password
   const hashPassword = auth.encryptPassword(password);
-  const payload = { username, password: hashPassword };
+  const payload = { username, email, password: hashPassword }; // Added email to the payload
 
   const newUser = await User.create(payload);
-  // sign person in and redirect to home page
+
+  // Sign the user in and redirect to home page
   req.session.user = {
     username: newUser.username,
     _id: newUser._id,
@@ -43,6 +48,9 @@ router.post('/sign-up', async (req, res) => {
     res.redirect('/');
   });
 });
+
+module.exports = router;
+
 
 // Sign in
 router.get('/sign-in', async (req, res) => {
@@ -83,5 +91,6 @@ router.get('/sign-out', async (req, res) => {
     res.redirect('/');
   });
 });
+
 
 module.exports = router;

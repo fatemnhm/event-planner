@@ -9,23 +9,72 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1><%= event.title %></h1>
+    <div class="show-page-container">
+        <div class="show-img"></div>
+        <div class="show-info-container">
+            <div class="show-header">
+                <% if (event && event.title) { %>
+                    <h1><%= event.title %></h1>
+                <% } %>
+            </div>
 
-    <h2>Event Details</h2>
-    <p>Date: <%= event.date %></p>
-    <p>Time: <%= event.time %></p>
-    <p>Location: <%= event.location %></p>
-    <p>Dress Code: <%= event.dressCode %></p>
-    <p>Description: <%= event.description %></p>
+            <div class="show-details-container">
+                <h2>Event Details</h2>
+                <p><strong>Title:</strong> <%= event.title %></p>
+                <p><strong>Date:</strong> <%= event.date %></p>
+                <p><strong>Time:</strong> <%= event.time %></p>
+                <p><strong>Location:</strong> <%= event.location %></p>
+                <p><strong>Dress Code:</strong> <%= event.dressCode %></p>
+                <p><strong>Description:</strong> <%= event.description %></p>
 
-    <% if (event.owner._id.equals(user._id)) { %>
-        <a href="/events/<%= event._id %>/edit">Edit this listing</a>
-        <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete this event</button>
-        </form>
-      
-    <% } %>
+                <% if (user && event.owner._id.equals(user._id)) { %>
+                    <!-- Owner-only Actions -->
+                    <a href="/events/<%= event._id %>/edit" class="btn edit-btn">Edit this Event</a>
+                    <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn delete-btn">Delete this Event</button>
+                    </form>
 
-   
+                    <h3>Add Attendee by Username</h3>
+                    <form action="/events/<%= event._id %>/attendees" method="POST">
+                        <label for="username">Attendee Username:</label>
+                        <input type="text" id="username" name="username" required />
+                        <button type="submit">Add Attendee</button>
+                    </form>
+
+                    <!-- Display Attendees List (Owner Only) -->
+                    <h3>Attendees</h3>
+                    <ul class="attendees-list">
+                        <% if (event.attendees.length > 0) { %>
+                            <% event.attendees.forEach(attendee => { %>
+                                <li>
+                                    <strong>Username:</strong> <%= attendee.user.username %> 
+                                    - <strong>Status:</strong> <%= attendee.status %>
+                                </li>
+                            <% }) %>
+                        <% } else { %>
+                            <p>No attendees yet.</p>
+                        <% } %>
+                    </ul>
+                <% } %>
+
+               
+                <% const attendee = event.attendees.find(att => att.user._id.equals(user._id)); %>
+                <% if (attendee) { %>
+                   
+                    <p><strong>Status:</strong> <%= attendee.status %></p>
+
+                    <form action="/events/<%= event._id %>/status" method="POST">
+                        <label for="status">Change Status:</label>
+                        <select name="status" id="status" required>
+                            <option value="Invited" <%= attendee.status === 'Invited' ? 'selected' : '' %>>Invited</option>
+                            <option value="Accepted" <%= attendee.status === 'Accepted' ? 'selected' : '' %>>Accept</option>
+                            <option value="Declined" <%= attendee.status === 'Declined' ? 'selected' : '' %>>Decline</option>
+                        </select>
+                        <button type="submit">Update Status</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

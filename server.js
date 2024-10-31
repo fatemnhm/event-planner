@@ -11,6 +11,7 @@ require('./config/database');
 const authController = require('./controllers/auth');
 const isSignedIn = require('./middleware/isSignedIn');
 const eventsController = require('./controllers/events');
+const invitationsController = require('./controllers/invitations');
 
 const app = express();
 // Set the port from environment variable or default to 3000
@@ -50,6 +51,7 @@ app.use('/auth', authController);
 // Protected Routes
 app.use(isSignedIn);
 app.use('/events',eventsController);
+app.use('/invitations', invitationsController);
 
 
 app.get('/protected', async (req, res) => {

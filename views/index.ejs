@@ -11,15 +11,29 @@
   <body>
     <%- include('./partials/_navbar.ejs') %>
     <% if (user) { %>
-      <h1>Welcome to the app, <%= user.username %>!</h1>
-      <a href="/auth/sign-out">Sign out</a>
+     
+      <div class="index-header">
+        <h1>Welcome <%= user.username %>!</h1>
+
+    
+        
+      </div>
+      
       <% } else { %>
-      <h1>Welcome to the app, guest.</h1>
-      <p>
-        <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
-      </p>
+        <div class="index-header">
+      
+         <h2> Welcome to Eventure!<br>
+Easily add events and manage your invitations all in one place. Whether
+ it's a birthday party, wedding, or corporate gathering, eventure simplifies the planning process, letting you
+  focus on what truly matters—creating unforgettable moments. Start organizing your events today and enjoy seamless invitation management!<h2>
+
+
+        </div>
+        
+    
       <% } %>
 
-      <p><a href="/protected">Get into the VIP Users Only lounge!</a></p>
   </body>
 </html>
+
+

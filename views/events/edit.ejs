@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
-  
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit <%= event.title %></title>
-</head>
-<body>
-      <%- include('../partials/_navbar.ejs') %>
-    <form action="/events/<%= event._id %>?_method=PUT" method="POST">
-        <label for="title">Title:</label>
-        <input
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <div class="new-container">
+      <div class="new-form-container">
+        <h1>Edit Event</h1>
+        <form action="/events/<%= event._id %>?_method=PUT" method="POST">
+          <label for="title">Title:</label>
+          <input
             type="text"
             name="title"
             id="title"
             value="<%= event.title %>"
             required
-        />
-      
-        <label for="date">Date:</label>
-        <input
+          />
+
+          <label for="date">Date:</label>
+          <input
             type="date"
             name="date"
             id="date"
             value="<%= event.date %>"
             required
-        />
-      
-        <label for="time">Time:</label>
-        <input
+          />
+
+          <label for="time">Time:</label>
+          <input
             type="time"
             name="time"
             id="time"
             value="<%= event.time %>"
             required
-        />
-      
-        <label for="location">Location:</label>
-        <input
+          />
+
+          <label for="location">Location:</label>
+          <input
             type="text"
             name="location"
             id="location"
             value="<%= event.location %>"
             required
-        />
-      
-        <label for="dressCode">Dress Code:</label>
-        <input
+          />
+
+          <label for="dressCode">Dress Code:</label>
+          <input
             type="text"
             name="dressCode"
             id="dressCode"
             value="<%= event.dressCode %>"
             required
-        />
-      
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" required><%= event.description %></textarea>
-      
-        <label for="privacy">Privacy:</label>
-        <select name="privacy" id="privacy" required>
-            <option value="Public" <%= event.privacy === 'Public' ? 'selected' : '' %>>Public</option>
-            <option value="Private" <%= event.privacy === 'Private' ? 'selected' : '' %>>Private</option>
-        </select>
-      
-        <button type="submit">Edit Event</button>
-    </form>
-</body>
+          />
+
+          <label for="description">Description:</label>
+          <textarea
+            name="description"
+            id="description"
+            required
+          ><%= event.description %></textarea>
+
+         
+          <button type="submit">Edit Event</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

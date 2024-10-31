@@ -25,10 +25,7 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  privacy: {
-    type: String,
-    enum: ['public', 'private'], 
-  },
+
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -36,18 +33,18 @@ const eventSchema = new mongoose.Schema({
   },
   attendees: [
     {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-      },
+      user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
       status: {
         type: String,
-        enum: ['Invited', 'Accepted', 'Declined'], // Attendee status options
+        enum: ['Invited', 'Accepted', 'Declined'],
         default: 'Invited',
       },
     },
   ],
 });
+
+
+
 
 const Event = mongoose.model('Event', eventSchema);
 

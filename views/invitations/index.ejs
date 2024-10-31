@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>My Invitations</title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+ 
+  <div class="index-header">
+    <h1>My Invitations</h1>
+    <a href="/events/new">Add Event</a>
+  </div>
+
+  <div class="card-container">
+    <% if (invitations.length === 0) { %>
+      <p>You have no invitations.</p>
+    <% } else { %>
+      <% invitations.forEach((event) => { %>
+   
+        <a href="/events/<%= event._id %>" class="event-card">
+          <h4><%= event.title %></h4>
+          <p>Owned by: <%= event.owner.username %></p>
+          <p>Status: 
+            <%= event.attendees.find(att => att.user._id.equals(user._id)).status %>
+          </p>
+        </a>
+      <% }) %>
+    <% } %>
+  </div>
+</body>
+</html>
