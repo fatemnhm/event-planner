@@ -112,7 +112,7 @@ router.delete('/:eventId', async (req, res) => {
 router.post('/:eventId/attendees', async (req, res) => {
     try {
       const { username } = req.body; // get the username from the form input
-      const user = await User.findOne({ username }); // Find user by username
+      const user = await User.findOne({ username }); // find user by username
   
       if (!user) {
         return res.send('User not found.'); //  doesn't exist
