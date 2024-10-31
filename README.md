@@ -5,7 +5,7 @@ Deployment Link: [deploy](https://project-event-994369872881.herokuapp.com/).
 
 
 ## Project Overview
-diblo [GitHub Pages](https://pages.github.com/).
+
 
 **Project Name:** Eventure 
 **Description:**  
