@@ -4,6 +4,9 @@ Here's a refreshed and detailed README for your **Event Planner** project:
 
 # Event Planner
 
+![Event Planner Screenshot](assets/event-planner-screenshot.png)
+
+
 ## Project Overview
 
 **Project Name:** Eventure 
@@ -20,6 +23,18 @@ The Event Planner app is a platform that allows users to create, manage, and tra
 - **Permissions:** Only users who create events can manage their details, and only attendees can edit their invitation status.
 
 ---
+
+
+## Technologies Used
+
+- **HTML**
+- **CSS**
+- **JavaScript (Node.js & Express)**
+- **MongoDB**
+- **Nodemailer**
+- **EJS (Embedded JavaScript)**
+
+--- 
 
 ## Data Model
 
@@ -52,6 +67,8 @@ Each `attendee` object within the `attendees` array has the following structure:
 |-----------|---------------------------------|--------------|---------------------------------------------------------------------------------------|
 | `user`    | ObjectId (ref: `User`)          | Yes          | Reference to the attendee user.                                                      |
 | `status`  | String                          | No           | RSVP status with options: `'Invited'`, `'Accepted'`, `'Declined'`. Default is `'Invited'`. Only the attendee can edit their own status. |
+
+
 
 ### Database Schema 
 
