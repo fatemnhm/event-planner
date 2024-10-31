@@ -133,7 +133,7 @@ router.post('/:eventId/attendees', async (req, res) => {
       event.attendees.push({ user: user._id });
       await event.save();
   
-      // Configure mail options with event details 
+      // configure mail options with event details 
       let mailOptions = {
         from: '"Events" <eventplannergabh@gmail.com>',
         to: user.email,
@@ -178,10 +178,7 @@ router.post('/:eventId/attendees', async (req, res) => {
         att.user._id.equals(req.session.user._id)
       );
   
-      if (!attendee) {
-        return res.status(403).send('You are not invited to this event.');
-      }
-  
+
       attendee.status = status;
       await event.save();
   

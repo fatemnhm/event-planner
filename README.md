@@ -22,18 +22,6 @@ The Event Planner app is a platform that allows users to create, manage, and tra
 - **Attendee Management:** Add and manage attendees for events, with attendees able to update their RSVP status.
 - **Permissions:** Only users who create events can manage their details, and only attendees can edit their invitation status.
 
----
-
-
-## Technologies Used
-
-- **HTML**
-- **CSS**
-- **JavaScript (Node.js & Express)**
-- **MongoDB**
-- **Nodemailer**
-- **EJS (Embedded JavaScript)**
-
 --- 
 
 ## Data Model
@@ -162,3 +150,42 @@ The `invitations` routes handle the display of events to which the logged-in use
 - Attendees have permission to edit their invitation status but cannot modify event details.
 
 ---
+## Technologies Used
+
+- **HTML**
+- **CSS**
+- **JavaScript (Node.js & Express)**
+- **MongoDB**
+- **Nodemailer**
+- **EJS (Embedded JavaScript)**
+
+```javascript
+
+
+ // configure mail options with event details 
+      let mailOptions = {
+        from: '"Events" <eventplannergabh@gmail.com>',
+        to: user.email,
+        subject: `Invitation to ${event.title}`,
+        html: `
+        <h1>🎉 You're Invited! 🎉</h1>
+       <p><strong>📅 Event:</strong> ${event.title}</p>
+      <p><strong>🗓️ Date:</strong> ${event.date}</p>
+      <p><strong>⏰ Time:</strong> ${event.time}</p>
+     <p><strong>📍 Location:</strong> ${event.location}</p>
+      <p><strong>👗 Dress Code:</strong> ${event.dressCode}</p>
+      <p><strong>📝 Description:</strong> ${event.description}</p>
+       <p>🚀 Please visit the event page to accept the invitation!</p>
+
+        `,
+      };
+  
+      // Send the email
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log('Error:', error);
+        } else {
+          console.log('Email sent:', info.response);
+        }
+      });
+```
