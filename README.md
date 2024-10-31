@@ -1,6 +1,3 @@
-Here's a refreshed and detailed README for your **Event Planner** project:
-
----
 
 # Event Planner
 
@@ -8,6 +5,7 @@ Here's a refreshed and detailed README for your **Event Planner** project:
 
 
 ## Project Overview
+diblo [GitHub Pages](https://pages.github.com/).
 
 **Project Name:** Eventure 
 **Description:**  
