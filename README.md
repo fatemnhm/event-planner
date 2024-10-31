@@ -56,13 +56,21 @@ Each `attendee` object within the `attendees` array has the following structure:
 ### Database Schema 
 
 ```javascript
-const mongoose = require('mongoose');
+
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   email: { type: String, required: true, unique: true, match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address.'] },
 });
+
+
+const User = mongoose.model('User', userSchema);
+```
+
+```javascript
+
+
 
 const eventSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -80,10 +88,9 @@ const eventSchema = new mongoose.Schema({
   ],
 });
 
-const User = mongoose.model('User', userSchema);
+
 const Event = mongoose.model('Event', eventSchema);
 ```
-
 ---
 
 ## Route Documentation
