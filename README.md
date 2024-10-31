@@ -1,4 +1,4 @@
-
+Deployment Link: [deploy](https://project-event-994369872881.herokuapp.com/).
 # Event Planner
 
 ![Event Planner Screenshot](assets/event-planner-screenshot.png)
